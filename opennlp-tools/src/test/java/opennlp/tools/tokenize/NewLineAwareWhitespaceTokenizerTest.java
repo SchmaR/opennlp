@@ -61,10 +61,18 @@ public class NewLineAwareWhitespaceTokenizerTest {
   }  
   
   @Test
-  public void testTokenizationOfStringWithNewLineTokens() {
-    Assert.assertEquals(2,  NewLineAwareWhitespaceTokenizer.INSTANCE.tokenize("a\n").length); // empty
+  public void testTokenizationOfStringWithUnixNewLineTokens() {
+    Assert.assertEquals(2, NewLineAwareWhitespaceTokenizer.INSTANCE.tokenize("a\n").length); // empty
     Assert.assertEquals(3, NewLineAwareWhitespaceTokenizer.INSTANCE.tokenize("a\nb").length);
     Assert.assertEquals(4, NewLineAwareWhitespaceTokenizer.INSTANCE.tokenize("a\n\n b").length);
     Assert.assertEquals(7, NewLineAwareWhitespaceTokenizer.INSTANCE.tokenize("a\n\n b\n\n c").length);
+  }  
+  
+  @Test
+  public void testTokenizationOfStringWithWindowsNewLineTokens() {
+    Assert.assertEquals(3, NewLineAwareWhitespaceTokenizer.INSTANCE.tokenize("a\r\n").length); // empty
+    Assert.assertEquals(4, NewLineAwareWhitespaceTokenizer.INSTANCE.tokenize("a\r\nb").length);
+    Assert.assertEquals(6, NewLineAwareWhitespaceTokenizer.INSTANCE.tokenize("a\r\n\r\n b").length);
+    Assert.assertEquals(11, NewLineAwareWhitespaceTokenizer.INSTANCE.tokenize("a\r\n\r\n b\r\n\r\n c").length);
   }
 }

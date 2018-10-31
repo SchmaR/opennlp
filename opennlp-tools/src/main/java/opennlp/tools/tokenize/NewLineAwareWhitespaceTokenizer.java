@@ -58,7 +58,7 @@ public class NewLineAwareWhitespaceTokenizer extends AbstractTokenizer {
           inTok = false;
           tokStart = -1;
         }
-        if (d.charAt(i) == '\n') {
+        if (isLineSeparator(d.charAt(i))) {
           tokStart = i;
           tokens.add(new Span(tokStart, tokStart + 1));
           tokStart = -1;
@@ -76,5 +76,9 @@ public class NewLineAwareWhitespaceTokenizer extends AbstractTokenizer {
     }
 
     return tokens.toArray(new Span[tokens.size()]);
+  }
+
+  private boolean isLineSeparator(char character) {
+    return character == Character.LINE_SEPARATOR || character == Character.LETTER_NUMBER;
   }
 }
