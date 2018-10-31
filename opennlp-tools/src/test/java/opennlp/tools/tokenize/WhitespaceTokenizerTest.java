@@ -54,12 +54,10 @@ public class WhitespaceTokenizerTest {
 
   @Test
   public void testTokenizationOfStringWithoutTokens() {
-    WhitespaceTokenizer tokenizer = WhitespaceTokenizer.INSTANCE;
-    tokenizer.setKeepNewLines(true);
-    Assert.assertEquals(0, tokenizer.tokenize("").length); // empty
-    Assert.assertEquals(0, tokenizer.tokenize(" ").length); // space
-    Assert.assertEquals(0, tokenizer.tokenize(" ").length); // tab
-    Assert.assertEquals(0, tokenizer.tokenize("     ").length);
+    Assert.assertEquals(0, WhitespaceTokenizer.INSTANCE.tokenize("").length); // empty
+    Assert.assertEquals(0, WhitespaceTokenizer.INSTANCE.tokenize(" ").length); // space
+    Assert.assertEquals(0, WhitespaceTokenizer.INSTANCE.tokenize(" ").length); // tab
+    Assert.assertEquals(0, WhitespaceTokenizer.INSTANCE.tokenize("     ").length);
   }
 
   @Test
