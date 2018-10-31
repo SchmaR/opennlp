@@ -95,7 +95,7 @@ public class TokenizerMETest {
   public void testNewLineAwareTokenization() throws IOException {
     TokenizerModel model = TokenizerTestUtil.createMaxentTokenModel();
     TokenizerME tokenizer = new TokenizerME(model);
-    tokenizer.setWhitespaceTokenizer(NewLineAwareWhitespaceTokenizer.INSTANCE);
+    tokenizer.setKeepNewLines(true);
     
     Assert.assertEquals(2, tokenizer.tokenize("a\n").length); // empty
     Assert.assertEquals(3, tokenizer.tokenize("a\nb").length);
