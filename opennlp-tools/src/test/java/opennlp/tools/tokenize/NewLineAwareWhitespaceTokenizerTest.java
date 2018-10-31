@@ -27,9 +27,9 @@ public class NewLineAwareWhitespaceTokenizerTest {
 
   @Test
   public void testOneToken() {
-    Assert.assertEquals("one", WhitespaceTokenizer.INSTANCE.tokenize("one")[0]);
-    Assert.assertEquals("one", WhitespaceTokenizer.INSTANCE.tokenize(" one")[0]);
-    Assert.assertEquals("one", WhitespaceTokenizer.INSTANCE.tokenize("one ")[0]);
+    Assert.assertEquals("one", NewLineAwareWhitespaceTokenizer.INSTANCE.tokenize("one")[0]);
+    Assert.assertEquals("one", NewLineAwareWhitespaceTokenizer.INSTANCE.tokenize(" one")[0]);
+    Assert.assertEquals("one", NewLineAwareWhitespaceTokenizer.INSTANCE.tokenize("one ")[0]);
   }
 
   /**
@@ -40,7 +40,7 @@ public class NewLineAwareWhitespaceTokenizerTest {
 
     String text = "a b c  d     e                f    ";
 
-    String[] tokenizedText = WhitespaceTokenizer.INSTANCE.tokenize(text);
+    String[] tokenizedText = NewLineAwareWhitespaceTokenizer.INSTANCE.tokenize(text);
 
     Assert.assertTrue("a".equals(tokenizedText[0]));
     Assert.assertTrue("b".equals(tokenizedText[1]));
@@ -54,17 +54,17 @@ public class NewLineAwareWhitespaceTokenizerTest {
 
   @Test
   public void testTokenizationOfStringWithoutTokens() {
-    Assert.assertEquals(0, WhitespaceTokenizer.INSTANCE.tokenize("").length); // empty
-    Assert.assertEquals(0, WhitespaceTokenizer.INSTANCE.tokenize(" ").length); // space
-    Assert.assertEquals(0, WhitespaceTokenizer.INSTANCE.tokenize(" ").length); // tab
-    Assert.assertEquals(0, WhitespaceTokenizer.INSTANCE.tokenize("     ").length);
+    Assert.assertEquals(0, NewLineAwareWhitespaceTokenizer.INSTANCE.tokenize("").length); // empty
+    Assert.assertEquals(0, NewLineAwareWhitespaceTokenizer.INSTANCE.tokenize(" ").length); // space
+    Assert.assertEquals(0, NewLineAwareWhitespaceTokenizer.INSTANCE.tokenize(" ").length); // tab
+    Assert.assertEquals(0, NewLineAwareWhitespaceTokenizer.INSTANCE.tokenize("     ").length);
   }  
   
   @Test
   public void testTokenizationOfStringWithNewLineTokens() {
-    Assert.assertEquals(2,  WhitespaceTokenizer.INSTANCE.tokenize("a\n").length); // empty
-    Assert.assertEquals(3, WhitespaceTokenizer.INSTANCE.tokenize("a\nb").length);
-    Assert.assertEquals(4, WhitespaceTokenizer.INSTANCE.tokenize("a\n\n b").length);
-    Assert.assertEquals(7, WhitespaceTokenizer.INSTANCE.tokenize("a\n\n b\n\n c").length);
+    Assert.assertEquals(2,  NewLineAwareWhitespaceTokenizer.INSTANCE.tokenize("a\n").length); // empty
+    Assert.assertEquals(3, NewLineAwareWhitespaceTokenizer.INSTANCE.tokenize("a\nb").length);
+    Assert.assertEquals(4, NewLineAwareWhitespaceTokenizer.INSTANCE.tokenize("a\n\n b").length);
+    Assert.assertEquals(7, NewLineAwareWhitespaceTokenizer.INSTANCE.tokenize("a\n\n b\n\n c").length);
   }
 }
