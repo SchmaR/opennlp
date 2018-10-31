@@ -97,7 +97,7 @@ public class TokenizerMETest {
     TokenizerME tokenizer = new TokenizerME(model);
     tokenizer.setKeepNewLines(true);
     
-    Assert.assertEquals(2, tokenizer.tokenize("a\n").length); // empty
+    Assert.assertEquals(2, tokenizer.tokenize("a\n").length);
     Assert.assertEquals(3, tokenizer.tokenize("a\nb").length);
     Assert.assertEquals(4, tokenizer.tokenize("a\n\n b").length);
     Assert.assertEquals(7, tokenizer.tokenize("a\n\n b\n\n c").length);
@@ -109,7 +109,7 @@ public class TokenizerMETest {
     TokenizerME tokenizer = new TokenizerME(model);
     tokenizer.setKeepNewLines(true);
 
-    Assert.assertEquals(3, tokenizer.tokenize("a\r\n").length); // empty
+    Assert.assertEquals(3, tokenizer.tokenize("a\r\n").length);
     Assert.assertEquals(4, tokenizer.tokenize("a\r\nb").length);
     Assert.assertEquals(6, tokenizer.tokenize("a\r\n\r\n b").length);
     Assert.assertEquals(11, tokenizer.tokenize("a\r\n\r\n b\r\n\r\n c").length);
