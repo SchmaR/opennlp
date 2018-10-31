@@ -117,6 +117,7 @@ public class TokenizerME extends AbstractTokenizer {
   private List<Double> tokProbs;
 
   private List<Span> newTokens;
+  private Tokenizer whitespaceTokenizer = WhitespaceTokenizer.INSTANCE;
 
   public TokenizerME(TokenizerModel model) {
     TokenizerFactory factory = model.getFactory();
@@ -177,7 +178,7 @@ public class TokenizerME extends AbstractTokenizer {
    * @return   A span array containing individual tokens as elements.
    */
   public Span[] tokenizePos(String d) {
-    Span[] tokens = WhitespaceTokenizer.INSTANCE.tokenizePos(d);
+    Span[] tokens = whitespaceTokenizer.tokenizePos(d);
     newTokens.clear();
     tokProbs.clear();
     for (Span s : tokens) {
@@ -256,5 +257,9 @@ public class TokenizerME extends AbstractTokenizer {
    */
   public boolean useAlphaNumericOptimization() {
     return useAlphaNumericOptimization;
+  }
+
+  public void setWhitespaceTokenizer(Tokenizer whitespaceTokenizer) {
+    this.whitespaceTokenizer = whitespaceTokenizer;
   }
 }

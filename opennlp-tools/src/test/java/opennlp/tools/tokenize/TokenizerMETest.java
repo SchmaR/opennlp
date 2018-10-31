@@ -90,5 +90,17 @@ public class TokenizerMETest {
     TokenizerME.train(samples, TokenizerFactory.create(null, "eng", null, true, null), mlParams);
 
   }
+
+  @Test
+  public void testNewLineAwareTokenization() throws IOException {
+    TokenizerModel model = TokenizerTestUtil.createMaxentTokenModel();
+    TokenizerME tokenizer = new TokenizerME(model);
+    tokenizer.setWhitespaceTokenizer(NewLineAwareWhitespaceTokenizer.INSTANCE);
+    
+    Assert.assertEquals(2, tokenizer.tokenize("a\n").length); // empty
+    Assert.assertEquals(3, tokenizer.tokenize("a\nb").length);
+    Assert.assertEquals(4, tokenizer.tokenize("a\n\n b").length);
+    Assert.assertEquals(7, tokenizer.tokenize("a\n\n b\n\n c").length);
+  }
   
 }
