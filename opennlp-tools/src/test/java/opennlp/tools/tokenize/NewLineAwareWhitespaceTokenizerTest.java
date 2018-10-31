@@ -62,11 +62,9 @@ public class NewLineAwareWhitespaceTokenizerTest {
   
   @Test
   public void testTokenizationOfStringWithNewLineTokens() {
-    String[] tokens = WhitespaceTokenizer.INSTANCE.tokenize("a\n");
-    Assert.assertEquals(2, tokens.length); // empty
+    Assert.assertEquals(2,  WhitespaceTokenizer.INSTANCE.tokenize("a\n").length); // empty
     Assert.assertEquals(3, WhitespaceTokenizer.INSTANCE.tokenize("a\nb").length);
-    String[] tokenize = WhitespaceTokenizer.INSTANCE.tokenize("a\n\n b");
-    Assert.assertEquals(4, tokenize.length);
+    Assert.assertEquals(4, WhitespaceTokenizer.INSTANCE.tokenize("a\n\n b").length);
     Assert.assertEquals(7, WhitespaceTokenizer.INSTANCE.tokenize("a\n\n b\n\n c").length);
   }
 }
