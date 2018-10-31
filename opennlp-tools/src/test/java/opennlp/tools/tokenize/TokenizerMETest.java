@@ -102,5 +102,17 @@ public class TokenizerMETest {
     Assert.assertEquals(4, tokenizer.tokenize("a\n\n b").length);
     Assert.assertEquals(7, tokenizer.tokenize("a\n\n b\n\n c").length);
   }
-  
+
+  @Test
+  public void testTokenizationOfStringWithWindowsNewLineTokens() throws IOException {
+    TokenizerModel model = TokenizerTestUtil.createMaxentTokenModel();
+    TokenizerME tokenizer = new TokenizerME(model);
+    tokenizer.setKeepNewLines(true);
+
+    Assert.assertEquals(3, tokenizer.tokenize("a\r\n").length); // empty
+    Assert.assertEquals(4, tokenizer.tokenize("a\r\nb").length);
+    Assert.assertEquals(6, tokenizer.tokenize("a\r\n\r\n b").length);
+    Assert.assertEquals(11, tokenizer.tokenize("a\r\n\r\n b\r\n\r\n c").length);
+  }
+
 }
